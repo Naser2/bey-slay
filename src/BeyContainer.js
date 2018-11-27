@@ -18,14 +18,6 @@ class BeyContainer extends Component {
           beyObj={beyObj}
           clickHandler={this.props.clickHandler}
         />
-        <Form
-         submitHandler={props.submitHandler}
-         handleChange={props.handleChange}
-         handleCheckBox={props.handleCheckBox}
-         name={this.state.name}
-         image={this.state.img}
-         action={this.state.action}
-         />
         </React.Fragment>
       );
     });
