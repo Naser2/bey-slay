@@ -3,33 +3,25 @@ import React, { Component } from "react";
 class ImageCard extends Component {
   render() {
     return (
-      <div>{this.props.beyObj ?
+      <React.Fragment>{ this.props.beyObj ?
+
       <div>
         <h2>{this.props.beyObj.name}</h2>
-        <img
-          src={this.props.beyObj.img}
-          alt=""
-          onClick={() => this.props.clickHandler(this.props.beyObj)}
-        />
-      </div> :
-        <div>
-          <h2>{this.props.jayObj.name}</h2>
-          <img
-            src={this.props.jayObj.img}
-            alt=""
-            onClick={() => this.props.clickHandler(this.props.jayObj)}
-          />
-        </div>}
+        <img src={this.props.beyObj.img} alt=""/>
+        <button onClick={() => this.props.editGif(this.props.beyObj)}>Edit</button>
+        <button onClick={() => this.props.deleteGif(this.props.beyObj)}>Delete</button>
+      </div> 
+      :
+      <div>
+        <h2>{this.props.jayObj.name}</h2>
+        <img src={this.props.jayObj.img} alt="" />
+        <button onClick={() => this.props.editGif(this.props.jayObj)}>Edit</button>
+        <button onClick={() => this.props.deleteGif(this.props.jayObj)}>Delete</button>
       </div>
-
+      }
+      </React.Fragment>
     );
   }
 }
 
 export default ImageCard;
-
-// let anonFunc = () => {
-//this.props.clickHandler()
-// }()
-
-//anonFunc()

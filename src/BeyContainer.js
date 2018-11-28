@@ -1,22 +1,18 @@
 import React, { Component } from "react";
-import ImageCard from "./ImageCard";
-import Form from './Form'
-
+import ImageCard from "./ImageCard"
 
 class BeyContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.clickHandler = this.clickHandler.bind(this);
-  // }
 
   render() {
+    //console.log('bey propssss', this.props)
     let arrayOfBey = this.props.beyImages.map(beyObj => {
       return (
         <React.Fragment>
         <ImageCard 
           key={beyObj.id}
           beyObj={beyObj}
-          clickHandler={this.props.clickHandler}
+          editGif={this.props.editGif}
+          deleteGif={this.props.deleteGif}
         />
         </React.Fragment>
       );

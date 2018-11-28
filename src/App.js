@@ -3,7 +3,7 @@ import "./App.css";
 import BeyContainer from "./BeyContainer";
 import JayContainer from "./JayContainer";
 import Form from "./Form";
-// import BeyImages from "./beyImages";
+import Search from "./Search"
 
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
     name: "",
     image: "",
     favorite: false,
+    searchTerm: "",
     action: 'create'
   };
 
@@ -27,9 +28,8 @@ class App extends Component {
           .then(beyRes => {
 
             this.setState({
-              beyImages: beyRes,
-
-              jayImages: jayRes
+              beyImages: beyRes, rerenderBeys: beyRes,
+              jayImages: jayRes, rerenderJays: jayRes
             });
 
           }).catch(err => console.log('errr occured', err))
@@ -37,40 +37,21 @@ class App extends Component {
   }
 
 
-
-  // clickHandler = beyObj => {
-  //   //Go into our Bey Array and remove the beyObj that was clicked on
-  //   //Delete
-  //   //Options: slice/splice, filter
-  //   // let copyArr = [...this.state.beyImages];
-  //   let copyArr = [...this.state.beyImages].filter(copyBeyObj => {
-  //     return copyBeyObj !== beyObj;
-  //   });
-  //   console.log(copyArr);
-  //   this.setState({
-  //     beyImages: copyArr
-  //   });
-  // };
-
   submitHandler = (action) => {
-    const {name, image,favorite} = this.state 
-
-
-  
-    const newSlay = {name, img:image, favorite}
+    const { name, image, favorite } = this.state //got these attr from state 
+    const newSlay = { name, img: image, favorite }//prepare my new obj for a post
     if (action === "create") {
-      fetch(`http://localhost:3000/${this.state.slayOwner}`,{
+      fetch(`http://localhost:3000/${this.state.slayOwner}`, {
         method: "POST",
-        headers:{
+        headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body:JSON.stringify(newSlay)
+        body: JSON.stringify(newSlay)
       }).then(res => res.json())
         .then(console.log)
-      
-        
     }
+
     if (action === "edit") {
       fetch()
         .then()
@@ -81,7 +62,7 @@ class App extends Component {
         .then()
         .then()
     }
-    if (action === "sort") {
+    if (action === "filter") {
       fetch()
         .then()
         .then()
@@ -90,25 +71,47 @@ class App extends Component {
   };
 
 
-  // submitHandler = (data) => {
-  //  console.log(data)
-  // }
+  editGif = (data) => {
+    console.log("hello edit", data)
+  }
+  deleteGif = (data) => {
+    console.log("Hello Dele", data)
+  }
+
 
   handleChange = (e) => {
+    // console.log(e.target.value)
+    const targetElement = e.target.name;
     this.setState({
-      [e.target.name]: e.target.value 
-      // slayOwner: jay 
+      [e.target.name]: e.target.value
+    }, () => {
+
+      if (targetElement === 'searchTerm') {
+        if (this.state.searchTerm) {
+          const regex = new RegExp(this.state.searchTerm.trim(), 'i');
+          this.setState({
+            beyImages: this.state.rerenderBeys.filter(img => regex.test(img.name.trim())),
+            jayImages: this.state.jayImages.filter(img => regex.test(img.name.trim()))
+          });
+        } else {
+          this.setState({
+            beyImages: this.state.rerenderBeys,
+            jayImages: this.state.rerenderJays
+          })
+        }
+      }
+
     })
   }
 
   handleCheckBox = () => { }
 
   render() {
-    const { name, image, favorite, action, slayOwner} = this.state;
-     console.log('all statesss', this.state)
+    const { name, image, favorite, action, slayOwner } = this.state;
+    //console.log('statesss', this.state)
     return (
       <div>
-        <div className="bey-container">
+        <div className="main">
           <Form
             submitHandler={this.submitHandler}
             handleChange={this.handleChange}
@@ -119,15 +122,23 @@ class App extends Component {
             action={action}
             slayOwner={slayOwner}
           />
-
-          <BeyContainer
+        </div>
+        <div className="search">
+          <Search searchTerm={this.state.searchTerm} handleChange={this.handleChange} />
+        </div>
+        <div >
+          <BeyContainer className="bey"
             beyImages={this.state.beyImages}
+            editGif={this.editGif}
+            deleteGif={this.deleteGif}
           />
         </div>
 
-        <div className="jay-container">
+        <div className="jay">
           <JayContainer
             jayImages={this.state.jayImages}
+            editGif={this.editGif}
+            deleteGif={this.deleteGif}
           />
         </div>
       </div>
