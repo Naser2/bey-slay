@@ -4,7 +4,7 @@ import BeyContainer from "./BeyContainer";
 import JayContainer from "./JayContainer";
 import Form from "./Form";
 import Search from "./Search"
-
+const images_Url = "http://localhost:3000"
 
 class App extends Component {
   state = {
@@ -12,7 +12,7 @@ class App extends Component {
     jayImages: [],
     slayOwner: '',
     name: "",
-    image: "",
+    img: "",
     favorite: false,
     searchTerm: "",
     action: 'create'
@@ -37,11 +37,11 @@ class App extends Component {
   }
 
 
-  submitHandler = ( action) => {
-    const { name, image, favorite } = this.state //got these attr from state 
-    const newSlay = { name, img: image, favorite }//prepare my new obj for a post
+  submitHandler = (action, data) => {
+    const { name, img, favorite, slayOwner } = this.state //got these attr from state 
+    const newSlay = { name, img: img, favorite, type: slayOwner }//prepare my new obj for a post
     if (action === "create") {
-      fetch(`http://localhost:3000/${this.state.slayOwner}`, {
+      fetch(`http://localhost:3000/${slayOwner}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,15 +52,37 @@ class App extends Component {
         .then(console.log)
     }
 
-    if (action === "edit") {
-      fetch()
-        .then()
-        .then()
+    if (action === "update") {
+      console.log('dffffff', action, data.id)
+        fetch(`${images_Url}/${data.type}/${this.state.slayId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(newSlay)
+        }).then(res => res.json())
+          .then(res => {
+            console.log('updated slayyyy', res);
+            const slay = res.type;
+            const beyOrJayImgs = this.state[`${slay}Images`]
+            const slayToReplace = beyOrJayImgs.find(slay => slay.id === this.state.slayId);
+            const slayToReplaceIndex = beyOrJayImgs.indexOf(slayToReplace);
+            beyOrJayImgs.splice(slayToReplaceIndex, 1, res);
+            this.setState({
+              name: "",
+              img: "",
+              favorite: false,
+              slayOwner: "",
+              [`${slay}Images`]: beyOrJayImgs
+          })
+        })         
     }
     if (action === "delete") {
-      fetch()
-        .then()
-        .then()
+      console.log("delete action called:", action, "data received:", data, this.slayOwner)
+      fetch(`image_Url${data.type}/${data.id}`,{method: "DELETE"})
+      .then(res => res.json())
+      .then(res => console.log("back from delete fetch:", res))  
     }
     if (action === "filter") {
       fetch()
@@ -88,9 +110,20 @@ class App extends Component {
 
   editGif = (data) => {
     console.log("hello edit", data)
+    this.setState({
+      action: "update",
+      name: data.name,
+      img: data.img,
+      favorite: data.favorite,
+      slayOwner: data.type,
+      slayId: data.id
+    });
   }
   deleteGif = (data) => {
-    console.log("Hello Delete", data)
+    this.setState({
+      action: "delete"
+    }, () => this.submitHandler(this.state.action, data))
+    
   }
 
 
@@ -125,7 +158,7 @@ class App extends Component {
   }
 
   render() {
-    const { name, image, favorite, action, slayOwner } = this.state;
+    const { name, img, favorite, action, slayOwner } = this.state;
     //console.log('statesss', this.state)
     return (
       <div>
@@ -134,8 +167,9 @@ class App extends Component {
             submitHandler={this.submitHandler}
             handleChange={this.handleChange}
             handleCheckBox={this.handleCheckBox}
+
             name={name}
-            image={image}
+            img={img}
             favorite={favorite}
             action={action}
             slayOwner={slayOwner}
@@ -151,7 +185,6 @@ class App extends Component {
             deleteGif={this.deleteGif}
             handleChange={this.handleChange}
             handleCheckBox={this.handleCheckBox}
-            slayOwner={slayOwner}
           />
         </div>
 
@@ -162,7 +195,7 @@ class App extends Component {
             deleteGif={this.deleteGif}
             handleChange={this.handleChange}
             handleCheckBox={this.handleCheckBox}
-            slayOwner={slayOwner}
+  
           />
         </div>
       </div>

@@ -10,15 +10,15 @@ class ImageCard extends Component {
         <h2>{this.props.beyObj.name}</h2>
         <img src={this.props.beyObj.img} alt=""/>
         <button onClick={() => this.props.editGif(this.props.beyObj)}>Edit</button>
-        <button onClick={() => this.props.deleteGif(this.props.beyObj)}>Delete</button>
-        <input type="checkbox" name="checkbox" value="checked" slayOwner={this.props.slayOwner} onChange={  (e) => this.props.handleCheckBox(e, this.props.beyObj)  }/><Emoji symbol="✨💖" label="Favoite">Favoite</Emoji>
+        <button value="bey" onClick={() => this.props.deleteGif(this.props.beyObj)}>Delete</button>
+        <input type="checkbox" name="checkbox" value="checked"  onChange={  (e) => this.props.handleCheckBox(e, this.props.beyObj)  }/><Emoji symbol="✨💖" label="Favoite">Favoite</Emoji>
       </div> 
       :
       <div>
         <h2>{this.props.jayObj.name}</h2>
         <img src={this.props.jayObj.img} alt="" />
         <button onClick={() => this.props.editGif(this.props.jayObj)}>Edit</button>
-        <button onClick={(e) => this.props.deleteGif(this.props.jayObj)}>Delete</button>
+        <button value="jay"onClick={(e) => this.props.deleteGif(this.props.jayObj)}>Delete</button>
         <input type="checkbox" name="checkbox" value="checked" onChange={(e) => this.props.handleCheckBox(e,this.props.jayObj)} />
         <Emoji symbol=" ✨👌 " label="Favoite"> Favoite</Emoji>
       </div>

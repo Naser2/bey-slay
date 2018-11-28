@@ -8,10 +8,12 @@ export default function Form(props) {
     <div>
       <form onSubmit={(e) => {
         e.preventDefault()
-        props.submitHandler(props.action);
+        props.submitHandler(props.action, {
+          name: props.name, img: props.img, favorite: props.favorite, type: props.slayOwner 
+        });
       }}>
         <input name="name" value={props.name} onChange={props.handleChange}/>
-        <input name="image" value={props.image} onChange={props.handleChange}/>
+        <input name="img" value={props.img} onChange={props.handleChange}/>
         <input type="checkbox" name="favorite" checked={props.favorite} onChange={props.handleCheckBox} />
         <select name="slayOwner" value={props.slayOwner} onChange={props.handleChange} >
           <option>Select one</option>

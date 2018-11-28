@@ -2,45 +2,45 @@
   "bey": [
     {
       "id": 1,
-      "name": "All Day Slay",
+      "name": "All Day Slay position 1",
       "img": "https://media.giphy.com/media/3o6gb7cN7bwDxAbnS8/giphy.gif",
+      "type": "bey",
       "favorite": false
     },
     {
       "id": 2,
-      "name": "I Slay When I Say I Slay",
+      "name": "I Slay When I Say I Slay for Ta-shwan",
       "img": "https://media.giphy.com/media/10tk2nVzRbNV5u/giphy.gif",
+      "type": "bey",
       "favorite": false
     },
     {
       "id": 3,
       "name": "I Probably Shouldn't Have Added This Slay",
       "img": "https://media.giphy.com/media/xT0BKERIJrOjV73nMc/giphy.gif",
+      "type": "bey",
       "favorite": false
     },
     {
       "id": 4,
       "name": "Hallway Slay",
       "img": "https://media1.tenor.com/images/07fcc7f498655079905813acbaa4113a/tenor.gif?itemid=5036498",
+      "type": "bey",
       "favorite": false
     },
     {
       "id": 5,
-      "name": "Queen Slay",
+      "name": "Queen Slay UPDATED",
       "img": "https://media1.tenor.com/images/390eeb72dc9e99e980d2e6f77dbe437b/tenor.gif?itemid=5230419",
+      "type": "bey",
       "favorite": false
     },
     {
-      "name": "Bey ",
-      "img": "http://4.bp.blogspot.com/_OZHbJ8c71OM/Sog43CMFX2I/AAAAAAAADEs/0AKX0XslD4g/s400/bo.png",
+      "name": "Bey AGain Edited and Updated  ",
+      "img": "https://media.giphy.com/media/3o6gb7cN7bwDxAbnS8/giphy.gif",
+      "type": "bey",
       "favorite": false,
       "id": 6
-    },
-    {
-      "name": "",
-      "img": "",
-      "favorite": false,
-      "id": 7
     }
   ],
   "jay": [
@@ -48,55 +48,36 @@
       "id": 1,
       "name": "Jay Confetti Slay",
       "img": "https://media.giphy.com/media/EGGunK4d4y3qo/giphy.gif",
+      "type": "jay",
       "favorite": false
     },
     {
       "id": 2,
       "name": "Jay Barclays Slay",
       "img": "https://media.giphy.com/media/FwE9DpvpJjuBW/giphy.gif",
+      "type": "jay",
       "favorite": false
     },
     {
       "id": 3,
       "name": "Jay Jammin' Slay",
       "img": "https://media.giphy.com/media/hiLLD9o1wTB3a/giphy.gif",
+      "type": "jay",
       "favorite": false
     },
     {
       "id": 4,
       "name": "Jay Number 1 Slay",
       "img": "https://media.giphy.com/media/101TgAiTF9v6E0/giphy.gif",
+      "type": "jay",
       "favorite": false
     },
     {
-      "id": 5,
-      "name": "Jay Grammay Slay",
-      "img": "https://media.giphy.com/media/LCHSXxyp357wY/giphy.gif",
-      "favorite": false
-    },
-    {
-      "name": "CuttiePie",
-      "img": "http://4.bp.blogspot.com/_OZHbJ8c71OM/Sog43CMFX2I/AAAAAAAADEs/0AKX0XslD4g/s400/bo.png",
+      "name": "My MAn ",
+      "img": "EDITED JAY ",
       "favorite": false,
+      "type": "jay",
       "id": 6
-    },
-    {
-      "name": "CuttiePie",
-      "img": "http://4.bp.blogspot.com/_OZHbJ8c71OM/Sog43CMFX2I/AAAAAAAADEs/0AKX0XslD4g/s400/bo.png",
-      "favorite": false,
-      "id": 7
-    },
-    {
-      "name": "New Jay",
-      "img": "http://4.bp.blogspot.com/_OZHbJ8c71OM/Sog43CMFX2I/AAAAAAAADEs/0AKX0XslD4g/s400/bo.png",
-      "favorite": false,
-      "id": 8
-    },
-    {
-      "name": "Nass",
-      "img": "Helooooo",
-      "favorite": true,
-      "id": 9
     }
   ]
 }

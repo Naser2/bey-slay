@@ -14,7 +14,7 @@ class JayContainer extends Component {
           deleteGif={this.props.deleteGif}
           handleChange={this.props.handleChange}
           handleCheckBox={ this.props.handleCheckBox}
-          slayOwner={this.props.slayOwner}
+
         />
       );
     });
