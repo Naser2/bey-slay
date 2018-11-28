@@ -84,11 +84,6 @@ class App extends Component {
       .then(res => res.json())
       .then(res => console.log("back from delete fetch:", res))  
     }
-    if (action === "filter") {
-      fetch()
-        .then()
-        .then()
-    }
 
   };
   handleCheckBox = (e, obj) => {
@@ -101,10 +96,6 @@ class App extends Component {
       fetch(`http://localhost:3000/${this.state.slayOwner}`,{
 
       })
-      // obj.favorite !== this.state.favorite
-      // this.setState({
-        
-      // })
     }
   }
 
@@ -146,10 +137,7 @@ class App extends Component {
             beyImages: this.state.rerenderBeys,
             jayImages: this.state.rerenderJays
           })
-        // }if (e.target === "checkbox"){
-        //   const favorited = this.handleCheckBox(obj)
-        //   console.log(favorited)
-   
+  
        }
         
       }
