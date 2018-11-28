@@ -12,6 +12,9 @@ class JayContainer extends Component {
           jayObj={jayObj}
           editGif={this.props.editGif}
           deleteGif={this.props.deleteGif}
+          handleChange={this.props.handleChange}
+          handleCheckBox={ this.props.handleCheckBox}
+          slayOwner={this.props.slayOwner}
         />
       );
     });

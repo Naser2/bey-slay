@@ -37,7 +37,7 @@ class App extends Component {
   }
 
 
-  submitHandler = (action) => {
+  submitHandler = ( action) => {
     const { name, image, favorite } = this.state //got these attr from state 
     const newSlay = { name, img: image, favorite }//prepare my new obj for a post
     if (action === "create") {
@@ -69,17 +69,32 @@ class App extends Component {
     }
 
   };
+  handleCheckBox = (e, obj) => {
+    console.log('Form changes', e.target.name)
+    this.setState({
+      favorite: !this.state.favorite
+    })
+    if(e.target.name === "checkbox"){
+      console.log('Card changes', e.target.name)
+      fetch(`http://localhost:3000/${this.state.slayOwner}`,{
 
+      })
+      // obj.favorite !== this.state.favorite
+      // this.setState({
+        
+      // })
+    }
+  }
 
   editGif = (data) => {
     console.log("hello edit", data)
   }
   deleteGif = (data) => {
-    console.log("Hello Dele", data)
+    console.log("Hello Delete", data)
   }
 
 
-  handleChange = (e) => {
+  handleChange = (e, obj) => {
     // console.log(e.target.value)
     const targetElement = e.target.name;
     this.setState({
@@ -98,13 +113,16 @@ class App extends Component {
             beyImages: this.state.rerenderBeys,
             jayImages: this.state.rerenderJays
           })
-        }
+        // }if (e.target === "checkbox"){
+        //   const favorited = this.handleCheckBox(obj)
+        //   console.log(favorited)
+   
+       }
+        
       }
 
     })
   }
-
-  handleCheckBox = () => { }
 
   render() {
     const { name, image, favorite, action, slayOwner } = this.state;
@@ -131,6 +149,9 @@ class App extends Component {
             beyImages={this.state.beyImages}
             editGif={this.editGif}
             deleteGif={this.deleteGif}
+            handleChange={this.handleChange}
+            handleCheckBox={this.handleCheckBox}
+            slayOwner={slayOwner}
           />
         </div>
 
@@ -139,6 +160,9 @@ class App extends Component {
             jayImages={this.state.jayImages}
             editGif={this.editGif}
             deleteGif={this.deleteGif}
+            handleChange={this.handleChange}
+            handleCheckBox={this.handleCheckBox}
+            slayOwner={slayOwner}
           />
         </div>
       </div>

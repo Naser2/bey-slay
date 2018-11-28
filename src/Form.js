@@ -1,4 +1,5 @@
 import React from 'react'
+import Emoji from './Emoji'
 
 export default function Form(props) {
 

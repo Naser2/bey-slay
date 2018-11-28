@@ -13,6 +13,9 @@ class BeyContainer extends Component {
           beyObj={beyObj}
           editGif={this.props.editGif}
           deleteGif={this.props.deleteGif}
+          handleChange={this.props.handleChange}
+          handleCheckBox={this.props.handleCheckBox}
+          slayOwner={this.props.slayOwner}
         />
         </React.Fragment>
       );
